@@ -6,27 +6,27 @@ class Person:
     def __init__(self, id):
 
         self.id = id
-        self.luck = random.randint(0, 500)/10
-        self.skill = random.randint(8000, 9500)/10
+        self.luck = random.randint(0, 50)/10
+        self.skill = random.randint(800, 950)/10
         self. total = self.luck + self.skill
 
     def __str__(self):
         return "Person: {}, Luck: {}, Skill: {}, Total: {}".format(self.id, self.luck, self.skill, self.total)
 
 
-def get_group(size):
+def get_group(size: int):
     group = []
     for i in range(size):
         group.append(Person(i))
     return group
 
 
-def print_group(group):
+def print_group(group: list):
     for i in group:
         print(i)
 
 
-def top_total(group, top):
+def top_total(group: list, top: int):
     totals = []
     for i in group:
         totals.append(i.total)
@@ -39,7 +39,7 @@ def top_total(group, top):
     return final_list
 
 
-def top_skill(group, top):
+def top_skill(group: list, top: int):
     skills = []
     for i in group:
         skills.append(i.skill)
@@ -52,7 +52,7 @@ def top_skill(group, top):
     return final_list
 
 
-def top_luck(group, top):
+def top_luck(group: list, top: int):
     lucks = []
     for i in group:
         lucks.append(i.luck)
@@ -64,28 +64,46 @@ def top_luck(group, top):
                 final_list.append(i)
     return final_list
 
-group = get_group(100)
 
-print_group(group)
-print("\n")
-
-top_totals = top_total(group, 10)
-top_skills = top_skill(group, 10)
-top_lucks = top_luck(group, 10)
-
-print("People with the highest total (skill + luck)")
-for i in top_totals:
-    print(i)
-
-print("\n")
+def average_totals(group: list):
+    totals = []
+    for i in group:
+        totals.append(i.total)
+    return sum(totals)/len(totals)
 
 
-print("People with the highest skill")
-for i in top_skills:
-    print(i)
+def average_skills(group: list):
+    skills = []
+    for i in group:
+        skills.append(i.skill)
+    return sum(skills)/len(skills)
 
-print("\n")
 
-print("People with the highest luck")
-for i in top_lucks:
-    print(i)
+def average_lucks(group: list):
+    lucks = []
+    for i in group:
+        lucks.append(i.luck)
+    return sum(lucks)/len(lucks)
+
+# group = get_group(100)
+
+# print_group(group)
+# print("\n")
+
+# top_totals = top_total(group, 10)
+# top_skills = top_skill(group, 10)
+# top_lucks = top_luck(group, 10)
+
+# print("People with the highest total (skill + luck)")
+# print_group(top_totals)
+
+# print("\n")
+
+
+# print("People with the highest skill")
+# print_group(top_skills)
+
+# print("\n")
+
+# print("People with the highest luck")
+# print_group(top_lucks)
